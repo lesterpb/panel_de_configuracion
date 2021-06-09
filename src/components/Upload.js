@@ -1,13 +1,11 @@
 import React from 'react'
-import { Avatar } from 'antd';
-import { AntDesignOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import { VerticalAlignTopOutlined } from '@ant-design/icons';
-import { Row,Col } from 'antd';
+import { Button,Avatar,Row,Col } from 'antd';
+import { AntDesignOutlined,VerticalAlignTopOutlined } from '@ant-design/icons';
+import '../App.css'
 
-const SubirLogo = () => {
+const SubirLogo = ({className=''}) => {
     return(
-        <Row gutter={[16,16]} align='middle'>
+        <Row gutter={[16,16]} align='middle' className={className}>
             <Col>
                 <Avatar
                     size={{
@@ -22,7 +20,7 @@ const SubirLogo = () => {
                 />
             </Col>
             <Col>
-                <Button icon={<VerticalAlignTopOutlined />}>Subir logo</Button>
+                <Button icon={<VerticalAlignTopOutlined />} className='b-round'>Subir logo</Button>
             </Col>
         </Row>
     );
