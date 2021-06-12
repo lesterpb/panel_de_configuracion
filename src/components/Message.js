@@ -1,21 +1,28 @@
-import React,{Fragment} from 'react'
-import { Row,Col,Typography } from 'antd';
+import { Typography } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
-const Message = ({infoIcon=false,message, className}) => {
+const Message = ({infoIcon=false,message, className='',style=null}) => {
     return (
-        <Row align="bottom" className={className}>
-            <Col span={1}>
-                <Typography.Text className="ant-form-text text-wraps" type="secondary" style={{fontSize:'17px'}}>
-                    {infoIcon ? <InfoCircleOutlined rotate='180'/> : null}  
-                </Typography.Text>   
-            </Col>
-            <Col span={23}>
-            <Typography.Text className="ant-form-text text-wraps" type="secondary">
-                {message}
-            </Typography.Text>               
-            </Col>
-        </Row>
+        
+        <div style={{marginLeft:'20px',marginBottom:'10px',...style}}>
+        <div style={{display:'flex',justifyContent:'normal'}}>
+            <Typography.Text className="ant-form-text text-wraps" type="secondary" style={{fontSize:'17px'}}>
+                {infoIcon ? <div style={{position:'relative'}}>
+                                <InfoCircleOutlined rotate='180' 
+                                                    style={{marginRight:'13px',position:'absolute',top:'3px',left:'-22px'}}/> 
+                            </div>
+                            : null}  
+            </Typography.Text> 
+            <div>
+                <Typography.Text className="ant-form-text text-wraps" 
+                                    type="secondary">
+                    {message}
+                </Typography.Text>
+            </div>   
+        </div>        
+        </div>
+
+
     )
 }
 
