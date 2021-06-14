@@ -9,7 +9,7 @@ const Message = ({infoIcon=false,message, className='',style=null}) => {
             <Typography.Text className="ant-form-text text-wraps" type="secondary" style={{fontSize:'17px'}}>
                 {infoIcon ? <div style={{position:'relative'}}>
                                 <InfoCircleOutlined rotate='180' 
-                                                    style={{marginRight:'13px',position:'absolute',top:'3px',left:'-22px'}}/> 
+                                                    style={{marginRight:'15px',position:'absolute',top:'3px',left:'-22px'}}/> 
                             </div>
                             : null}  
             </Typography.Text> 

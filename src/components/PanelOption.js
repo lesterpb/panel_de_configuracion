@@ -1,16 +1,14 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import styled from '@emotion/styled'
-import { Radio,Row,Col,Typography } from 'antd';
 import OptionRadio from './OptionRadio'
-import Message from './Message'
 
 const Panel = styled.div`    
-    height: 5rem;
+    height: auto;
     width: 100%;
     border: 1px solid #ddd;    
     border-radius: 5px;
-    margin: 10px 5px;
-    padding: 5px;
+    margin: 10px 4px;
+    padding: 0px;
     display: inline-block;
     
 
@@ -22,71 +20,41 @@ const Panel = styled.div`
         width: 48%;
     }
 `
-
-const RadioLabel = styled.span`
-   font-weight: 666;
-`
-
-const PanelOption = ({option,description,value,panelOptionSelect, savePanelOptionSelect,className=null}) => {
-                                                                           
-    const {Text} = Typography
-
+const PanelOption = ({option,description,value, configurations, saveConfigurations,className=null}) => {
+    const {panelOptionSelect} = configurations
     useEffect(()=>{
-        // if(panelOptionSelect===value){
-        //     const panelActual = document.querySelector(`#panel-${value}`)
-        //     panelActual.classList.add('option-panel-selected')
-        //     const visualRadio = document.querySelector(`#panel-${value} .ant-radio`);
-        //     visualRadio.classList.add('ant-radio-checked') 
-        //     const wrapperRadioActual = document.querySelector(`#panel-${value} .ant-radio-wrapper`);
-        //     wrapperRadioActual.classList.add('ant-radio-wrapper-checked')
-        // }
-    },[])
+        if(panelOptionSelect===value){
+            const panelActual = document.querySelector(`#panel-${value}`)
+            panelActual.classList.add('option-panel-selected')
+            const textActual = document.querySelector(`#radio-text-${value}`)
+            textActual.classList.add('radio-text-selected')
+        }
+    },[panelOptionSelect])
 
     const selectPanel = () => {
         //Desmarca el panel y quita los estilos
         const panelBefore = document.querySelector(`#panel-${panelOptionSelect}`)
         panelBefore.classList.remove('option-panel-selected')
-        // const visualRadioBefore = document.querySelector(`#panel-${panelOptionSelect} .ant-radio`);
-        // visualRadioBefore.classList.remove('ant-radio-checked')
-        // const wrapperRadioBefore = document.querySelector(`#panel-${panelOptionSelect} .ant-radio-wrapper`);
-        // wrapperRadioBefore.classList.remove('ant-radio-wrapper-checked')
+        const textBefore = document.querySelector(`#radio-text-${panelOptionSelect}`)
+        textBefore.classList.remove('radio-text-selected')
 
         //Marca el panel y pone los estilos
         const panelActual = document.querySelector(`#panel-${value}`)
         panelActual.classList.add('option-panel-selected')
-        // const visualRadioActual = document.querySelector(`#panel-${value} .ant-radio`);
-        // visualRadioActual.classList.add('ant-radio-checked')
-        // const wrapperRadioActual = document.querySelector(`#panel-${value} .ant-radio-wrapper`);
-        // wrapperRadioActual.classList.add('ant-radio-wrapper-checked')
-        savePanelOptionSelect(value)
+        const textActual = document.querySelector(`#radio-text-${value}`)
+        textActual.classList.add('radio-text-selected')
+        saveConfigurations({...configurations,panelOptionSelect:value})
 
         // console.log(`#panel-${panelOptionSelect}`,`#panel-${value}`)
     }
 
     return(
         <Panel className={className} id={`panel-${value}`}>
-            <OptionRadio message={option} value={value}/>
-            <Message message={description} 
-                   style={{marginBottom:'2.5rem'}} />
-            {/* <div style={{marginLeft:'20px',marginBottom:'10px'}}>
-                <div style={{display:'flex',justifyContent:'normal'}}>
-                    <Typography.Text className="ant-form-text text-wraps" type="secondary" style={{fontSize:'17px'}}>
-                        <div style={{position:'relative'}}>
-                            <Radio type='radio'
-                                    value={value} 
-                                    id={`radio-panel-${value}`} 
-                                    style={{marginRight:'13px',position:'absolute',top:'3px',left:'-22px'}}
-                                    onChange={selectPanel}/> 
-                        </div>
-                    </Typography.Text> 
-                    <div>
-                        <Typography.Text className="ant-form-text text-wraps" 
-                                        type="secondary">
-                            {description}
-                        </Typography.Text>
-                    </div>  
-                </div>        
-            </div> */}
+            <OptionRadio option={option} 
+                         description={description}
+                         value={value}
+                         style={{marginLeft:'12px',marginBottom:'10px',marginTop:'8px'}}
+                         action={selectPanel}/>
         </Panel>
     )
 }

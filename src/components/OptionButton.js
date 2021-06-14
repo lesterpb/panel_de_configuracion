@@ -3,14 +3,14 @@ import React from 'react'
 import {Button} from 'antd';
 // import '../App.css'
 
-const OptionButton = ({className, text, value,optionButtonSelect, saveOptionButtonSelect}) => {
-
+const OptionButton = ({className, text, value, configurations, saveConfigurations}) => {
+    const {optionButtonSelect} = configurations
     useEffect(()=>{
         if(optionButtonSelect === value){
             const buttonActual = document.querySelector(`#button-${value}`)
             buttonActual.classList.add('option-button-selected')
         }
-    },[])
+    },[optionButtonSelect])
 
     const updateSelection = () => {
         //Quita los estilos al boton
@@ -19,7 +19,7 @@ const OptionButton = ({className, text, value,optionButtonSelect, saveOptionButt
             buttonBefore.classList.remove('option-button-selected')
 
         //Recoge el valor actual
-        saveOptionButtonSelect(value)
+        saveConfigurations({...configurations,optionButtonSelect:value})
 
         //Da los estilos al boton
         const buttonActual = document.querySelector(`#button-${value}`)        

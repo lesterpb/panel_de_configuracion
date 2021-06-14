@@ -1,10 +1,10 @@
 import React from 'react'
-import { Upload,message,Button,Image,Avatar,Row,Col } from 'antd';
-import { AntDesignOutlined,VerticalAlignTopOutlined,UploadOutlined } from '@ant-design/icons';
+import { Upload,message,Button,Image,Row,Col } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import '../App.css'
 
-const SubirLogo = ({saveFileSelect,className=''}) => {
-
+const SubirLogo = ({configurations,saveConfigurations,className=''}) => {
+    const {fileSelect} = configurations 
     const props = {
         name: 'file',
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -12,11 +12,11 @@ const SubirLogo = ({saveFileSelect,className=''}) => {
           authorization: 'authorization-text',
         },
         onChange(info) {
+          saveConfigurations({...configurations,fileSelect:'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'})
           if (info.file.status !== 'uploading') {
             console.log(info.file, info.fileList);
           }
-          if (info.file.status === 'done') {
-            saveFileSelect(info.file.name)
+          if (info.file.status === 'done') {              
             message.success(`${info.file.name} file uploaded successfully`);
           } else if (info.file.status === 'error') {
             message.error(`${info.file.name} file upload failed.`);
@@ -26,22 +26,29 @@ const SubirLogo = ({saveFileSelect,className=''}) => {
 
     return(
         <Row gutter={[16,16]} align='middle' className={className}>
-            <Col>
-                {/* <Avatar
-                    size={{
-                    xs: 24,
-                    sm: 32,
-                    md: 40,
-                    lg: 64,
-                    xl: 70,
-                    xxl: 90,
-                    }}
-                    icon={<AntDesignOutlined />}
-                /> */}
-                <Image width={80}
-                       height={80}
-                       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                       style={{borderRadius:'50%',overflow:'hidden'}}/>
+            <Col style={{borderRadius:'50'}}>
+                { fileSelect ? <Image width={80}
+                                        height={80}
+                                        src={fileSelect}
+                                        alt='B'
+                                        style={{borderRadius:'50%'}}/> 
+                            :  <div style={{borderRadius:'50%',
+                                    width: '80px',
+                                    height: '80px',
+                                    overflow:'hidden',
+                                    backgroundColor:'rgb(107, 104, 104)',
+                                    fontWeight:'bold',
+                                    fontSize:40,
+                                    textAlign:'center',
+                                    color:'white',
+                                    position:'relative'}}>                     
+                                    <span style={{position:'absolute',
+                                    top:'5px',
+                                    left:'28px'}}>B</span> 
+                                </div>
+                }
+                
+                   
             </Col>
             <Col>
                 <Upload {...props}>

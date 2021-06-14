@@ -146,16 +146,16 @@ const LabelTag = styled.label`
 
 
 
-const CustomRadio = ({color='blue',size=1, name, value, colorSelect, saveColorSelect, title=null,}) => {
-
+const CustomRadio = ({color='blue',size=1, name, value, configurations, saveConfigurations, title=null,}) => {
+    const {colorSelect} = configurations
     useEffect(()=>{
         if(colorSelect===value)
             document.querySelector(`#radio-color-${value}`).checked=true
-    },[])
+    },[colorSelect])
 
     return (
         <LabelTag color={color} className='radio' size={size}>{title}
-            <input type="radio" name={name} id={`radio-color-${value}`} onChange={()=>{saveColorSelect(value)}}/>
+            <input type="radio" name={name} id={`radio-color-${value}`} onChange={()=>{saveConfigurations({...configurations,colorSelect:value})}}/>
             <span className="check"></span>            
         </LabelTag> 
     )
