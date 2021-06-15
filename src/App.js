@@ -8,14 +8,7 @@ import ShowChanges from './components/ShowChanges'
 function App() {
   
   //states
-  const [configurations,saveConfigurations] = useState({
-    optionButtonSelect: 3,
-    colorSelect:2,
-    panelOptionSelect:1,
-    nameSpace:'Mi espacio personal',
-    url:'mi_espacio_personal',
-    fileSelect:null,
-  })
+  const [configurations,saveConfigurations] = useState({})
 
   const [auxiliars,saveAuxiliars] = useState({
     initialValues: {},
@@ -27,15 +20,23 @@ function App() {
 
   //auxiliars
   useEffect(()=>{
-    //inicializa los valores auxiliares
+    //initial values
+    saveConfigurations({
+      optionButtonSelect: 3,
+      colorSelect:7,
+      panelOptionSelect:1,
+      nameSpace:"Ep: Mi espacio de trabajo",
+      url:"Ep: mi.dominio",
+      fileSelect:null,
+    })
     saveAuxiliars({
       initialValues: {
-        initialOptionButtonSelect: configurations.optionButtonSelect,
-        initialColorSelect: configurations.colorSelect,
-        initialPanelOptionSelect: configurations.panelOptionSelect,
-        initialNameSpace: configurations.nameSpace,
-        initialUrl: configurations.url,
-        initialFileSelect: configurations.fileSelect,
+        initialOptionButtonSelect: 3,
+        initialColorSelect: 7,
+        initialPanelOptionSelect: 1,
+        initialNameSpace: "Ep: Mi espacio de trabajo",
+        initialUrl: "Ep: mi.dominio",
+        initialFileSelect: null,
       },
       messages: ['Este logo identificará tu espacio del resto',
       'Preferiblemente sube una imagen .png igual o superior a 65px a 72ppp con findo transparente',

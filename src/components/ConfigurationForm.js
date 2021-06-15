@@ -1,7 +1,7 @@
 import '../css/Components.css'
 import { Fragment } from 'react'
 import 'antd/dist/antd.css';
-import { Form, Input,Radio, Typography, Modal, Button } from 'antd';
+import { Input,Radio, Typography, Modal, Button } from 'antd';
 
 import Upload from './Upload'
 import Message from './Message'
@@ -19,14 +19,13 @@ const ConfigurationForm = ({configurations,
   //State
   const {optionButtonSelect,panelOptionSelect,colorSelect,nameSpace,url} = configurations
   const {initialOptionButtonSelect,initialPanelOptionSelect,initialColorSelect,initialNameSpace,initialUrl,initialFileSelect} = initialValues
+  
   //antd componets
   const {Title} = Typography
-  const {Item} = Form
-
   
   //methods
   const saveChanges = () => {
-    let secondsToGo = 2;
+    let secondsToGo = 5;
     const modal = Modal.success({
       title: 'Mensaje',
       content: `Los cambios fueron guardados con éxito.`,
@@ -47,20 +46,18 @@ const ConfigurationForm = ({configurations,
       fileSelect:initialFileSelect,
     })
     
-    console.log(configurations)
-
     numberOfPeopleOptions.map((option,id) => {
       if(initialOptionButtonSelect!=id)
         document.querySelector(`#button-${id}`).classList.remove('option-button-selected') 
     })
 
     privacyOptions.map((option,id) => {
-      console.log(initialPanelOptionSelect!=id,initialPanelOptionSelect,id)
       if(initialPanelOptionSelect!=id){
         document.querySelector(`#panel-${id}`).classList.remove('option-panel-selected')
         document.querySelector(`#radio-text-${id}`).classList.remove('radio-text-selected')
       }
     })
+    console.log('all discard')
   }
   
   return (
@@ -76,46 +73,29 @@ const ConfigurationForm = ({configurations,
       <Message message={messages[1]} 
               style={{marginBottom:'2.5rem'}} />
               
-        <Item
-          name="nombre_espacio"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor inserte el nombre de su espacio de trabajo!',
-            },
-          ]}
-        >
-          <label htmlFor="nombre_espacio">
-            <Title level={5}>Nombre del espacio</Title>
-          </label>
-          <Input placeholder="Ep: Mi espacio de trabajo" 
-                className='input-default'
-                name="nombre_espacio"
-                value={nameSpace}
-                onChange={e => {saveConfigurations({...configurations,nameSpace:e.target.value})}}/>
-          { nameSpace ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
-        </Item>
-
-        <Item
-          name="url_espacio"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor inserte su URL!',
-            },
-          ]}
-        >
-          <label htmlFor="url_espacio">
-            <Title level={5}>URL del espacio (dirección web)</Title>
-          </label>
-          <Input  placeholder="Ep: mi.dominio" 
-                suffix=".dofleini.com"  
-                className='input-default'
-                name="url_espacio"
-                value={url}
-                onChange={e => {saveConfigurations({...configurations,url:e.target.value})}}/>
-          { url ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
-        </Item>
+       
+        <label htmlFor="nombre_espacio">
+          <Title level={5}>Nombre del espacio</Title>
+        </label>
+        <Input placeholder="Ep: Mi espacio de trabajo" 
+              className='input-default'
+              name="nombre_espacio"
+              value={nameSpace}
+              onChange={e => {saveConfigurations({...configurations,nameSpace:e.target.value})}}/>
+        { nameSpace ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
+      
+      <div style={{marginTop:'2rem'}} >
+        <label htmlFor="url_espacio" >
+          <Title level={5}>URL del espacio (dirección web)</Title>
+        </label>
+        <Input  placeholder="Ep: mi.dominio" 
+              suffix=".dofleini.com"  
+              className='input-default'
+              name="url_espacio"
+              value={url}
+              onChange={e => {saveConfigurations({...configurations,url:e.target.value})}}/>
+        { url ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
+      </div> 
 
         <Message message={messages[2]} 
               infoIcon={true} 

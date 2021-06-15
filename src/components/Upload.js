@@ -7,13 +7,13 @@ const SubirLogo = ({configurations,saveConfigurations,className=''}) => {
     const {fileSelect} = configurations 
     const props = {
         name: 'file',
-        /*aqui va la direccion a donde se envia la foto */
+        /*action recive the url where the picture will be send*/
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
         headers: {
           authorization: 'authorization-text',
         },
         onChange(info) {
-          /*aqui se salva la direccion que se usa para acceder a la foto una vez subida al sitio*/
+          /*this line get the url where the picture can be see*/
           saveConfigurations({...configurations,fileSelect:'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'})
           if (info.file.status !== 'uploading') {
             console.log('subiendo la imagen');

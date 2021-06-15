@@ -44,8 +44,6 @@ const PanelOption = ({option,description,value, configurations, saveConfiguratio
         const textActual = document.querySelector(`#radio-text-${value}`)
         textActual.classList.add('radio-text-selected')
         saveConfigurations({...configurations,panelOptionSelect:value})
-
-        // console.log(`#panel-${panelOptionSelect}`,`#panel-${value}`)
     }
 
     return(
