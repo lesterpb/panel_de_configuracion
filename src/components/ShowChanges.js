@@ -37,8 +37,14 @@ const ShowChanges = ({configurations,colors}) => {
                         { fileSelect ? <Image width={50}
                                                 height={50}
                                                 src={fileSelect}
-                                                alt='B'
-                                                style={{borderRadius:'50%',boxShadow:'0px 0px 2px 1px white'}}/> 
+                                                alt='Img'
+                                                style={{borderRadius:'50%',
+                                                        boxShadow:'0px 0px 2px 1px white',
+                                                        textAlign:'center',
+                                                        fontSize:'15px',
+                                                        fontWeight:'bold',
+                                                        color:'white',
+                                                        backgroundColor:'#aaa'}}/> 
                                     :  <div style={{borderRadius:'50%',
                                             width: '50px',
                                             height: '50px',
@@ -50,7 +56,7 @@ const ShowChanges = ({configurations,colors}) => {
                                             position:'relative',
                                             boxShadow:'0px 0px 5px 1px white'}}>                     
                                             <span style={{position:'absolute',
-                                            top:'8px',
+                                            top:'7.5px',
                                             left:'19px'}}>B</span> 
                                         </div>
                         }

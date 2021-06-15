@@ -1,7 +1,7 @@
 import '../css/Components.css'
-import {Fragment,useState} from 'react'
+import { Fragment } from 'react'
 import 'antd/dist/antd.css';
-import { Form, Input,Radio, Typography, Button } from 'antd';
+import { Form, Input,Radio, Typography, Modal, Button } from 'antd';
 
 import Upload from './Upload'
 import Message from './Message'
@@ -26,6 +26,14 @@ const ConfigurationForm = ({configurations,
   
   //methods
   const saveChanges = () => {
+    let secondsToGo = 2;
+    const modal = Modal.success({
+      title: 'Mensaje',
+      content: `Los cambios fueron guardados con éxito.`,
+    });
+    setTimeout(() => {
+      modal.destroy();
+    }, secondsToGo * 1000);
     console.log(optionButtonSelect,panelOptionSelect,colorSelect,url,nameSpace)
   }
 
@@ -85,6 +93,7 @@ const ConfigurationForm = ({configurations,
                 name="nombre_espacio"
                 value={nameSpace}
                 onChange={e => {saveConfigurations({...configurations,nameSpace:e.target.value})}}/>
+          { nameSpace ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
         </Item>
 
         <Item
@@ -105,6 +114,7 @@ const ConfigurationForm = ({configurations,
                 name="url_espacio"
                 value={url}
                 onChange={e => {saveConfigurations({...configurations,url:e.target.value})}}/>
+          { url ? null : <p style={{color:'rgb(224, 21, 21)'}}>Campo obligatorio *</p>}
         </Item>
 
         <Message message={messages[2]} 
@@ -157,9 +167,14 @@ const ConfigurationForm = ({configurations,
         </Radio.Group>
         
         <div style={{marginTop:'2rem',marginBottom:'10rem',marginLeft:'0.5rem'}}>
-            <Button type='primary b-round' 
-                    style={{marginRight:'1rem',marginBottom:'1rem'}}
-                    onClick={saveChanges}>Guardar Cambios</Button>
+            {url && nameSpace ? <Button type='primary b-round' 
+                                        style={{marginRight:'1rem',marginBottom:'1rem'}}
+                                        onClick={saveChanges}>Guardar Cambios</Button> 
+                              : <Button type='primary b-round' 
+                                style={{marginRight:'1rem',marginBottom:'1rem'}}
+                                disabled
+                                onClick={saveChanges}>Guardar Cambios</Button>}
+            
             <Button type='default b-round'
                     onClick={clearAll}>Descartar</Button>
         </div>
