@@ -31,7 +31,7 @@ const OptionButton = ({className, text, value, configurations, saveConfiguration
                 id={`button-${value}`} 
                 onClick={updateSelection}
         >
-            {text}
+            <span>{text}</span>
         </Button>
     )
 }

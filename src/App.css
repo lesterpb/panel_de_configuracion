@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&family=Open+Sans:wght@400;600&display=swap');
+
+
+:root {
+
+    /* Colors: */
+    --unnamed-color-48b5fe: #48B5FE;
+    --unnamed-color-ffffff: #FFFFFF;
+    --unnamed-color-e4e4e4: #E4E4E4;
+    --unnamed-color-000000: #000000;
+    --unnamed-color-ebf7ff: #EBF7FF;
+    --unnamed-color-f5f5f5: #F5F5F5;
+    --unnamed-color-fec148: #FEC148;
+    --unnamed-color-268dd2: #268DD2;
+    
+    /* Font/text values */
+    --unnamed-font-family-fira-sans: 'Fira Sans';
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-size-14: 14px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-line-spacing-20: 20px;
+    }
+    
+    /* Character Styles */
+    .unnamed-character-style-1 {
+    font-family: var(--unnamed-font-family-fira-sans);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-14);
+    line-height: var(--unnamed-line-spacing-20);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    }
+    .unnamed-character-style-2 {
+    font-family: var(--unnamed-font-family-fira-sans);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-14);
+    line-height: var(--unnamed-line-spacing-20);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    }
+    
+html{
+    /* top: 0px;
+    left: 0px; */
+    width: 1920px;
+    height: 1269px;
+
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
 html{
     min-height: 100%;
 }
@@ -15,3 +70,163 @@ h1,h2{
     font-family: Arial, Helvetica, sans-serif;
     /* letter-spacing: 1px; */
 }
+
+.mb-default{
+    margin-bottom: 10px;
+    /* justify-content: space-around; */
+}
+
+.option-button{
+    margin: 10px 5px 10px 0px;
+    /* height: 50px !important;  */
+    width: 66px !important;
+    height: 46px !important;
+    padding: 0px !important;  
+    font-weight: 600 !important;  
+}
+
+.option-button-text{
+    font-size: 14px/20px !important;
+    text-align: left !important;
+}
+
+.option-button-selected{
+    box-shadow: 0px 0px 0px 3px #eaebec !important;
+    border: 1px solid #40a9ff !important;
+    color: #40a9ff !important;
+}
+
+.option-panel-selected{
+    border: 1px solid #40a9ff !important;
+    box-shadow: 0px 0px 0px 3px #eaebec !important;
+}
+
+.radio-text-selected{
+    color:#40a9ff !important;
+}
+
+.b-round{
+    border-radius: 5px !important;
+}
+
+.b-round-50{
+    border-radius: 50% !important;
+}
+
+.input-default{
+    border-radius: 5px !important;
+    height: 45px;
+    color:rgb(224, 21, 21)
+}
+
+/* on mouse-over, add border color */
+.radio:hover input ~ .check {
+    border: 2px solid white;
+}
+
+
+
+/* -------------------- */
+.form-subtitle{
+    top: 42px !important;
+    left: 110px !important;
+    width: 112px !important;
+    height: 22px !important;
+    font: var(--unnamed-font-style-normal) normal medium 18px/var(--unnamed-line-spacing-20) var(--unnamed-font-family-fira-sans) !important;
+    letter-spacing: var(--unnamed-character-spacing-0) !important;
+    color: var(--unnamed-color-000000) !important;
+    text-align: left !important;
+    font: normal normal medium 18px/20px Fira Sans !important;
+    letter-spacing: 0px !important;
+    color: #000000D6 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.form-title{
+    top: 84px !important;
+    left: 111px !important;
+    width: 106px !important;
+    height: 17px !important;
+    /* font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-fira-sans); */
+    letter-spacing: var(--unnamed-character-spacing-0) !important;
+    color: var(--unnamed-color-000000) !important;
+    text-align: left !important;
+    font: normal normal normal 14px/20px Fira Sans !important;
+    letter-spacing: 0px !important;
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+}
+
+.upload-button{
+    /* top: 133px !important;
+    left: 191px !important; */
+    width: 105px !important;
+    height: 32px !important;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box !important;
+    border: 1px solid var(--unnamed-color-e4e4e4) !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border: 1px solid #E4E4E4 !important;
+    border-radius: 5px !important;
+    opacity: 1 !important;
+}
+
+.upload-button-icon{
+    /* top: 142px;
+    left: 203px; */
+    width: 13px;
+    height: 13px;
+    background: transparent url('./img/Group 2493.svg') 0% 0% no-repeat padding-box;
+    opacity: 0.5;
+    margin-right: 0.2rem;
+}
+
+.img-alt-layout{
+    /* top: 126px;
+    left: 133px; */
+    width: 67px;
+    height: 67px;
+    background: #343C4A 0% 0% no-repeat padding-box;
+    border-radius: 34px;
+    opacity: 1;
+}
+
+.img-alt-letter{
+    top: 126px;
+    left: 133px;
+    width: 23px;
+    height: 45px;
+    font: var(--unnamed-font-style-normal) normal medium 37px/34px var(--unnamed-font-family-fira-sans);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: left;
+    font: normal normal medium 37px/34px Fira Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.lateral-view{
+    top: 191px;
+    left: 1113px;
+    width: 807px;
+    height: 598px;
+    background: transparent  0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.paragraph{
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-fira-sans) !important;
+    letter-spacing: var(--unnamed-character-spacing-0) !important;
+    color: var(--unnamed-color-000000) !important;
+    text-align: left !important;
+    font: normal normal normal 14px/20px Fira Sans !important;
+    letter-spacing: 0px !important;
+    color: #00000080 !important;
+    opacity: 1 !important;
+}
+
+
+
+

@@ -1,4 +1,4 @@
-import '../css/Components.css'
+import '../App.css'
 import { Fragment } from 'react'
 import 'antd/dist/antd.css';
 import { Input,Radio, Typography, Modal, Button } from 'antd';
@@ -62,23 +62,25 @@ const ConfigurationForm = ({configurations,
   
   return (
     <Fragment>
-      <Title level={3}>Configuración</Title>
-      <Title level={4}>Logo del espacio</Title>          
+      <p className='form-title'>Configuración</p>
+      <p className='form-subtitle'>Logo del espacio</p>          
       <Upload className='mb-default'
               configurations={configurations}
               saveConfigurations={saveConfigurations}/>
       <Message message={messages[0]} 
               infoIcon={true} 
-              style={{marginBottom:'0.3rem'}}/>         
+              style={{marginBottom:'0.3rem'}}
+              className='paragraph'/>         
       <Message message={messages[1]} 
-              style={{marginBottom:'2.5rem'}} />
+              style={{marginBottom:'2.5rem'}}
+              className='paragraph' />
               
        
         <label htmlFor="nombre_espacio">
           <Title level={5}>Nombre del espacio</Title>
         </label>
         <Input placeholder="Ep: Mi espacio de trabajo" 
-              className='input-default'
+              className='input-default paragraph'
               name="nombre_espacio"
               value={nameSpace}
               onChange={e => {saveConfigurations({...configurations,nameSpace:e.target.value})}}/>
@@ -90,7 +92,7 @@ const ConfigurationForm = ({configurations,
         </label>
         <Input  placeholder="Ep: mi.dominio" 
               suffix=".dofleini.com"  
-              className='input-default'
+              className='input-default paragraph'
               name="url_espacio"
               value={url}
               onChange={e => {saveConfigurations({...configurations,url:e.target.value})}}/>
@@ -99,9 +101,11 @@ const ConfigurationForm = ({configurations,
 
         <Message message={messages[2]} 
               infoIcon={true} 
-              style={{marginBottom:'0.3rem'}}/>         
+              style={{marginBottom:'0.7rem',marginTop:'1rem'}}
+              className='paragraph'/>         
         <Message message={messages[3]} 
-              style={{marginBottom:'2.5rem'}} />
+              style={{marginBottom:'2.5rem'}}
+              className='paragraph' />
 
         <Title level={5}>¿Cuantas personas trabajan contigo, incluyendote a ti?</Title>
 
@@ -116,16 +120,18 @@ const ConfigurationForm = ({configurations,
 
         <Message message={messages[0]} 
               infoIcon={true} 
-              style={{marginBottom:'0.3rem'}}/>         
+              style={{marginBottom:'0.5rem'}}/>         
         <Message message={messages[1]} 
               style={{marginBottom:'2.5rem'}} />
         
         <Title level={5} >Color del tema</Title>
                   
         {colors.map((color,id) => (
-          <CustomRadio color={color} 
+          <CustomRadio  insideColor={color.in} 
+                        outsideColor={color.out} 
                         key={`radio-color-${id}`}
-                        size={3} 
+                        size={4} 
+                        left='40.5px'
                         name='background' 
                         value={id} 
                         configurations={configurations}

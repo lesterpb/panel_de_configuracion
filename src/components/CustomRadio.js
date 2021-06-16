@@ -7,7 +7,7 @@ const LabelTag = styled.label`
     margin-right: 10px;
     display: inline-block;
     position: relative;
-    padding-left: 35px;
+    padding-left: ${props => props.left};
     margin-bottom: 3rem;
     margin-right: 12px;
     cursor: pointer;
@@ -33,6 +33,7 @@ const LabelTag = styled.label`
                 case 1: return '26px';
                 case 2: return '30px';
                 case 3: return '36px';
+                case 4: return '40px';
                 default: return '26px';
             }
         }};
@@ -41,11 +42,12 @@ const LabelTag = styled.label`
                 case 1: return '26px';
                 case 2: return '30px';
                 case 3: return '36px';
+                case 4: return '40px';
                 default: return '26px';
             }
         }};
-        background-color: ${props => props.color};
-        border: 2px solid ${props => props.color};
+        background-color: ${props => props.insideColor};
+        border: 2px solid ${props => props.insideColor};
         border-radius: 50%;
     }
 
@@ -64,6 +66,7 @@ const LabelTag = styled.label`
             case 1: return '26px';
             case 2: return '30px';
             case 3: return '36px';
+            case 4: return '40px';
             default: return '26px';
         }
     }};
@@ -72,6 +75,7 @@ const LabelTag = styled.label`
             case 1: return '26px';
             case 2: return '30px';
             case 3: return '36px';
+            case 4: return '40px';
             default: return '26px';
         }
     }};
@@ -89,7 +93,7 @@ const LabelTag = styled.label`
     input:checked ~ .check {
         background-color: white;
         border:none;
-        box-shadow: 0px 0px 0px 5px ${props => props.color};
+        box-shadow: 0px 0px 0px 5px ${props => props.outsideColor};
     }
 
     /* create the radio and hide when not checked */
@@ -111,6 +115,7 @@ const LabelTag = styled.label`
                 case 1: return '3.5px';
                 case 2: return '4px';
                 case 3: return '5px';
+                case 4: return '5.2px';
                 default: return '4px';
             }
         }};
@@ -119,6 +124,7 @@ const LabelTag = styled.label`
                 case 1: return '3.5px';
                 case 2: return '4px';
                 case 3: return '5px';
+                case 4: return '5.2px';
                 default: return '3.5px';
             }
         }};
@@ -127,6 +133,7 @@ const LabelTag = styled.label`
                 case 1: return '18.5px';
                 case 2: return '22px';
                 case 3: return '26px';
+                case 4: return '30px';
                 default: return '18.5px';
             }
         }};
@@ -135,18 +142,19 @@ const LabelTag = styled.label`
                 case 1: return '18.3px';
                 case 2: return '22px';
                 case 3: return '26px';
+                case 4: return '30px';
                 default: return '18.3px';
             }
         }};
         border-radius: 50%;
-        background: ${props => props.color};
+        background: ${props => props.insideColor};
     }    
 `
 
 
 
 
-const CustomRadio = ({color='blue',size=1, name, value, configurations, saveConfigurations, title=null,}) => {
+const CustomRadio = ({insideColor='blue', outsideColor='blue',size=1, left, name, value, configurations, saveConfigurations, title=null,}) => {
     const {colorSelect} = configurations
     useEffect(()=>{
         if(colorSelect===value)
@@ -154,7 +162,11 @@ const CustomRadio = ({color='blue',size=1, name, value, configurations, saveConf
     },[colorSelect])
 
     return (
-        <LabelTag color={color} className='radio' size={size}>{title}
+        <LabelTag insideColor={insideColor} 
+                  outsideColor={outsideColor} 
+                  className='radio' 
+                  size={size}
+                  left={left}>{title}
             <input type="radio" name={name} id={`radio-color-${value}`} onChange={()=>{saveConfigurations({...configurations,colorSelect:value})}}/>
             <span className="check"></span>            
         </LabelTag> 

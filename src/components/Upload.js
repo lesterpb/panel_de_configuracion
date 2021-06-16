@@ -29,29 +29,29 @@ const SubirLogo = ({configurations,saveConfigurations,className=''}) => {
     return(
         <Row gutter={[16,16]} align='middle' className={className}>
             <Col style={{borderRadius:'50'}}>
-                { fileSelect ? <Image width={80}
-                                        height={80}
+                { fileSelect ? <Image width={67}
+                                        height={67}
                                         src={fileSelect}
                                         alt='Img'
                                         style={{borderRadius:'50%',
                                                 textAlign:'center',
-                                                fontSize:'34px',
+                                                fontSize:'37px',
                                                 fontWeight:'bold',
                                                 color:'white',
-                                                backgroundColor:'#aaa'}}/> 
+                                                backgroundColor:'#343C4A'}}/> 
                             :  <div style={{borderRadius:'50%',
-                                    width: '80px',
-                                    height: '80px',
+                                    width: '67px',
+                                    height: '67px',
                                     overflow:'hidden',
-                                    backgroundColor:'rgb(107, 104, 104)',
+                                    backgroundColor:'#343C4A',
                                     fontWeight:'bold',
-                                    fontSize:40,
+                                    fontSize:30,
                                     textAlign:'center',
                                     color:'white',
                                     position:'relative'}}>                     
                                     <span style={{position:'absolute',
-                                    top:'5px',
-                                    left:'28px'}}>B</span> 
+                                    top:'8px',
+                                    left:'24px'}}>B</span> 
                                 </div>
                 }
                 
@@ -59,7 +59,9 @@ const SubirLogo = ({configurations,saveConfigurations,className=''}) => {
             </Col>
             <Col>
                 <Upload {...props}>
-                    <Button icon={<UploadOutlined />} className='b-round'>Subir logo</Button>
+                    <Button className='upload-button'>
+                      <span className='upload-button-icon'></span>Subir logo
+                    </Button>
                 </Upload>
             </Col>
         </Row>
